@@ -11,7 +11,12 @@ const identity = {
     hobbies: ["playing guitar", "coding", "reading a book"]
 };
 
-const skills = ["HTML", "JavaScript", "Python", "Apps Script", "VBA"]
+const skills = ["HTML", "JavaScript", "Python", "Apps Script", "VBA"];
+
+// What To Show
+const happy = true;
+const finished = false;
+const goal = 5;
 ---
 
 <Layout title={pageTitle}>
@@ -30,4 +35,10 @@ const skills = ["HTML", "JavaScript", "Python", "Apps Script", "VBA"]
     <ul>
         {skills.map((skill) => <li>{skill}</li>)}
     </ul>
+
+    <p>Conditional Rendering :</p>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished the second chapter of Astro Docs!</p>}
+    {goal <= 3 ? <p>I will finish chapter two within 3 days.</p> : <p>OMG. It takes time more than I think.🎃</p>}
+    
 </Layout>
