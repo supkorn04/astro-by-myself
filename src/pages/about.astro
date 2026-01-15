@@ -4,20 +4,37 @@ import Layout from '../layouts/Layout.astro';
 const pageTitle = "About Me";
 
 // My Information
-const identity = {
-    firstName: "SUPKORN",
-    country: "Thailand",
-    occupation: "Data Analytic Engineer",
-    hobbies: ["playing guitar", "coding", "reading a book"]
-};
+    const identity = {
+        firstName: "SUPKORN",
+        country: "Thailand",
+        occupation: "Data Analytic Engineer",
+        hobbies: ["playing guitar", "coding", "reading a book"]
+    };
 
-const skills = ["HTML", "JavaScript", "Python", "Apps Script", "VBA"];
+    const skills = ["HTML", "JavaScript", "Python", "Apps Script", "VBA"];
 
 // What To Show
-const happy = true;
-const finished = false;
-const goal = 5;
+    const happy = true;
+    const finished = false;
+    const goal = 5;
+
+//CSS Font Format
+    const skillColor = "crimson";
+    const fontWeight = "bold";
+    const textCase = "uppercase";
 ---
+<style define:vars={{skillColor, fontWeight, textCase}}>
+    h1 {
+        color: purple;
+        font-size: 4rem;
+    }
+
+    .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    } 
+</style>
 
 <Layout title={pageTitle}>
     <h1>{pageTitle}</h1>
@@ -33,12 +50,14 @@ const goal = 5;
 
     <p>My Skills :</p>
     <ul>
-        {skills.map((skill) => <li>{skill}</li>)}
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
 
-    <p>Conditional Rendering :</p>
-    {happy && <p>I am happy to be learning Astro!</p>}
-    {finished && <p>I finished the second chapter of Astro Docs!</p>}
-    {goal <= 3 ? <p>I will finish chapter two within 3 days.</p> : <p>OMG. It takes time more than I think.🎃</p>}
+    <p><b>Conditional Rendering :</b></p>
+    <ul>
+        <li>{happy && <p>I am happy to be learning Astro!</p>}</li>
+        <li>{finished ? <p>I finished the second chapter of Astro Docs!</p> : <p>Not finished yet...</p>}</li>
+        <li>{goal <= 3 ? <p>I will finish chapter two within 3 days.</p> : <p>OMG. It takes time more than I think.🎃</p>}</li>
+    </ul>
     
 </Layout>
