@@ -1,5 +1,6 @@
 ---
 // src/layouts/Layout.astro
+const {title} = Astro.props.frontmatter || Astro.props
 ---
 
 <html lang="en">
@@ -8,6 +9,9 @@
 		<href rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} >
+
+		<title>{title}</title>
+
 
 		<style>
 			nav {
@@ -33,6 +37,8 @@
 		<a href="/about">About</a>
 		<a href="/blog">Blog</a>
 		</nav>
+
+		<p>{title}</p>
 
 		<main>
 			<slot />  

@@ -1,8 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "About Me";
+
+// My Information
+const identity = {
+    firstName: "SUPKORN",
+    country: "Thailand",
+    occupation: "Data Analytic Engineer",
+    hobbies: ["playing guitar", "coding", "reading a book"]
+};
+
+const skills = ["HTML", "JavaScript", "Python", "Apps Script", "VBA"]
 ---
 
-<Layout>
-    <h1>About Me</h1>
-    <p>Helloooooo</p>
+<Layout title={pageTitle}>
+    <h1>{pageTitle}</h1>
+    <p>Hello, my name is Mean. You can call me {identity.firstName}. I am learning building my blog using Astro!</p>
+    
+    <p>My Information :</p>
+    <ul>
+        <li>I live in {identity.country} for most time of my life.</li>
+        {identity.hobbies.length >=2 &&
+            <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+        }
+    </ul>
+
+    <p>My Skills :</p>
+    <ul>
+        {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
 </Layout>
